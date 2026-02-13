@@ -16,27 +16,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-light.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
     <link rel="stylesheet" href="styles.css" />
-    <script src="theme.js" defer></script>
+    <script src="app.js" defer></script>
   </head>
-  <body class="min-h-screen bg-white text-ink">
+  <body class="min-h-screen text-ink">
     <div class="page-noise"></div>
     <main class="max-w-5xl mx-auto px-6 py-12">
-      <header class="mb-10 flex items-center justify-between gap-4">
-        <h1 class="text-3xl font-normal">
+      <header class="mb-10 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <h1 class="text-2xl md:text-3xl font-normal">
           <a href="/">4loyak!</a>
         </h1>
-        <div>
-          <p class="text-sm text-ink/70">Dark Theme</p>
-          <label>
+        <div class="flex items-center gap-3">
+          <p class="text-xs md:text-sm text-ink/70">Dark:</p>
+          <label class="flex items-center gap-1">
             <input type="radio" class="nes-radio" name="dark-theme" id="theme-yes" />
-            <span>Yes</span>
+            <span class="text-xs">Yes</span>
           </label>
-          <label>
+          <label class="flex items-center gap-1">
             <input type="radio" class="nes-radio" name="dark-theme" id="theme-no" checked />
-            <span>No</span>
+            <span class="text-xs">No</span>
           </label>
         </div>
-        <nav class="flex gap-2 items-center text-sm">
+        <nav class="flex flex-wrap gap-2 items-center text-xs md:text-sm">
           <a class="nes-btn is-success" href="#projects">Projects</a>
           <a class="nes-btn is-warning" href="/contact">Contact</a>
           <a class="nes-btn is-error" href="https://github.com/aloyak"><i class="nes-icon github"></i></a>
@@ -114,6 +114,15 @@ fn main() {
         And many more projects on <a href="https://github.com/aloyak?tab=repositories "class="text-primary hover:underline">Github</a>!
       </h2>
 
+      <h2 id="github" class="mt-12 text-2xl font-normal">Github</h2>
+      <div class="mt-6 gap-6">
+        <div class="nes-container is-rounded bg-cream">
+          <h3 class="text-lg font-normal">Contributions</h3>
+          <p class="text-sm">github.com/aloyak</p>
+          <div id="contributions-chart"></div>
+        </div>
+      </div>
+
       <h2 class="mt-12 text-2xl font-normal">About Me</h2>
       <div class="mt-6">
         <div class="nes-container with-title is-rounded bg-cream">
@@ -157,6 +166,5 @@ fn main() {
         attributeFilter: ['data-theme']
       });
     </script>
-    <script src="time.js"></script>
   </body>
 </html>

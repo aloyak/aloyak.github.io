@@ -14,21 +14,21 @@
     />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="styles.css" />
-    <script src="theme.js" defer></script>
+    <script src="app.js" defer></script>
   </head>
-  <body class="min-h-screen bg-white text-ink">
+  <body class="min-h-screen text-ink">
     <div class="page-noise"></div>
     <main class="max-w-3xl mx-auto px-6 py-12">
-      <header class="mb-10 flex items-center justify-between gap-4">
-        <h1 class="text-3xl font-normal">
+      <header class="mb-10 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <h1 class="text-2xl md:text-3xl font-normal">
           <a href="/">4loyak!</a>
         </h1>
-        <nav class="flex gap-2 items-center text-sm">
+        <nav class="flex flex-wrap gap-2 items-center text-xs md:text-sm">
           <a class="nes-btn is-success" href="/">Back</a>
           <a class="nes-btn is-error" href="https://github.com/aloyak"><i class="nes-icon github"></i></a>
-          <label class="nes-checkbox">
+          <label class="nes-checkbox flex items-center gap-1">
             <input id="dark-mode-toggle" type="checkbox" />
-            <span>Dark</span>
+            <span class="text-xs">Dark</span>
           </label>
         </nav>
       </header>

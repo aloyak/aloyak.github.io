@@ -1,38 +1,38 @@
-/* https://colorhunt.co/palette/fffdf6faf6e9ddeb9da0c878 */
+/* https://colorhunt.co/palette/a59d84c1baa1d7d3bfecebde */
 :root {
-  --sand: #FFFDF6;
-  --cream: #FAF6E9;
+  --bg: #ECEBDE;
+  --primary: #D7D3BF;
   --ink: #2b2b2b;
-  --accent: #DDEB9D;
+  --accent: #A5C89E;
 }
 
 body {
   font-family: "Press Start 2P", "Courier New", monospace;
-  background-color: var(--sand);
+  background-color: var(--bg);
   color: var(--ink);
 }
 
 html[data-theme="dark"] {
-  --sand: #1a1a1a;
-  --cream: #2d2d2d;
+  --bg: #1a1a1a;
+  --primary: #2d2d2d;
   --ink: #e8e8e8;
   --accent: #a89a3a;
 }
 
 html[data-theme="dark"] body {
-  background-color: var(--sand);
+  background-color: var(--bg);
   color: var(--ink);
 }
 
 html[data-theme="dark"] .nes-container,
 html[data-theme="dark"] .nes-balloon {
-  background-color: var(--cream);
+  background-color: var(--primary);
   border-color: var(--ink);
 }
 
 html[data-theme="dark"] .nes-input,
 html[data-theme="dark"] .nes-textarea {
-  background-color: var(--cream);
+  background-color: var(--primary);
   color: var(--ink);
   border-color: var(--ink);
 }
@@ -72,11 +72,11 @@ html[data-theme="dark"] pre {
 }
 
 .bg-sand {
-  background-color: var(--sand);
+  background-color: var(--bg);
 }
 
 .bg-cream {
-  background-color: var(--cream);
+  background-color: var(--primary);
 }
 
 .text-ink {
@@ -111,4 +111,82 @@ html[data-theme="dark"] pre {
   body {
     font-size: 12px;
   }
+  
+  .nes-btn {
+    font-size: 0.65rem;
+    padding: 0.5rem;
+  }
+  
+  header {
+    gap: 0.75rem !important;
+  }
+}
+
+/* Pixel Contributions Chart */
+.pixel-grid {
+  display: flex;
+  gap: 2px;
+  margin-top: 1rem;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.pixel-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.pixel-cell {
+  width: 100%;
+  aspect-ratio: 1;
+  background: var(--primary);
+}
+
+.pixel-cell.level-0 {
+  background: #e0dfd5;
+}
+
+.pixel-cell.level-1 {
+  background: #b8e986;
+}
+
+.pixel-cell.level-2 {
+  background: #7bc96f;
+}
+
+.pixel-cell.level-3 {
+  background: #49af5d;
+}
+
+.pixel-cell.level-4 {
+  background: #2d9348;
+}
+
+html[data-theme="dark"] .pixel-cell.level-0 {
+  background: #3a3a3a;
+}
+
+html[data-theme="dark"] .pixel-cell.level-1 {
+  background: #4ade80;
+}
+
+html[data-theme="dark"] .pixel-cell.level-2 {
+  background: #22c55e;
+}
+
+html[data-theme="dark"] .pixel-cell.level-3 {
+  background: #16a34a;
+}
+
+html[data-theme="dark"] .pixel-cell.level-4 {
+  background: #15803d;
+}
+
+.contributions-total {
+  margin-top: 1rem;
+  font-size: 0.7rem;
+  opacity: 0.7;
+  text-align: left;
 }
