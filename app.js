@@ -6,6 +6,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const themeYes = document.getElementById("theme-yes");
   const themeNo = document.getElementById("theme-no");
   const htmlElement = document.documentElement;
+  const headerEl = document.querySelector("main > header");
+
+  const setHeaderHeight = () => {
+    if (!headerEl) return;
+    htmlElement.style.setProperty("--header-height", `${headerEl.offsetHeight}px`);
+  };
 
   const savedMode = localStorage.getItem("colorMode");
   const isDark = savedMode === "dark";
@@ -41,6 +47,9 @@ document.addEventListener("DOMContentLoaded", () => {
   if (isDark) {
     updateTheme(true);
   }
+
+  setHeaderHeight();
+  window.addEventListener("resize", setHeaderHeight);
 
   if (darkModeToggle) {
     darkModeToggle.addEventListener("change", () => {
@@ -104,7 +113,6 @@ document.addEventListener("DOMContentLoaded", () => {
           totalContributions += contribution.count;
         });
 
-        // Generate full year with data
         const today = new Date();
         const startDate = new Date(today);
         startDate.setDate(startDate.getDate() - 364);

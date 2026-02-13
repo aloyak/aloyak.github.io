@@ -10,6 +10,10 @@
     />
     <link
       rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap"
+    />
+    <link
+      rel="stylesheet"
       href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css"
     />
     <script src="https://cdn.tailwindcss.com"></script>
@@ -20,13 +24,13 @@
   </head>
   <body class="min-h-screen text-ink">
     <div class="page-noise"></div>
-    <main class="max-w-5xl mx-auto px-6 py-12">
-      <header class="mb-10 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+    <main class="max-w-5xl mx-auto px-6">
+      <header class="my-2 flex flex-col gap-4 md:flex-row md:items-center justify-between">
         <h1 class="text-2xl md:text-3xl font-normal">
           <a href="/">4loyak!</a>
         </h1>
         <div class="flex items-center gap-3">
-          <p class="text-xs md:text-sm text-ink/70">Dark:</p>
+          <p class="text-xs md:text-sm text-ink/70">Dark?</p>
           <label class="flex items-center gap-1">
             <input type="radio" class="nes-radio" name="dark-theme" id="theme-yes" />
             <span class="text-xs">Yes</span>
@@ -43,8 +47,37 @@
         </nav>
       </header>
 
+      <section class="hero">
+        <div class="hero-parallax" aria-hidden="true">
+          <div class="hero-layer layer-1"></div>
+          <div class="hero-layer layer-2"></div>
+          <div class="hero-layer layer-3"></div>
+          <div class="hero-layer layer-4"></div>
+        </div>
+        <div class="hero-inner">
+          <div class="hero-content">
+            <h2 class="hero-title" aria-label="4loyak!">
+          <span class="hero-letter" style="--letter-index: 0" aria-hidden="true">4</span>
+          <span class="hero-letter" style="--letter-index: 1" aria-hidden="true">L</span>
+          <span class="hero-letter" style="--letter-index: 2" aria-hidden="true">O</span>
+          <span class="hero-letter" style="--letter-index: 3" aria-hidden="true">Y</span>
+          <span class="hero-letter" style="--letter-index: 4" aria-hidden="true">A</span>
+          <span class="hero-letter" style="--letter-index: 5" aria-hidden="true">K</span>
+          <span class="hero-letter" style="--letter-index: 6" aria-hidden="true">!</span>
+            </h2>
+            <p class="hero-subtitle">Welcome to my site! Make yourself comfortable.</p>
+          </div>
+        </div>
+        <div class="hero-curtain" aria-hidden="true"></div>
+        <!--bottom right-->
+        <div class="absolute top-0 right-10 m-4 text-sm opacity-40">
+          <p>
+            > Textures from <a href="https://free-game-assets.itch.io/">craftpix.net</a></p>
+        </div>
+      </section>
+
       <section class="nes-container with-title is-rounded bg-cream">
-        <p class="title">Hello</p>
+        <p class="title">Hello!</p>
         <div class="grid gap-8 lg:grid-cols-[2fr,1fr]">
           <div class="space-y-4">
             <div>
@@ -86,6 +119,7 @@ fn main() {
     print("Temperature is around", temperature)
 }</code></pre>
           <a class="nes-btn mt-4 is-primary" href="https://sk-lang.vercel.app">View Project</a>
+          <a class="nes-btn mt-4" href="https://sk-lang.vercel.app/ide">Web IDE</a>
           <a class="nes-btn mt-4" href="https://github.com/aloyak/SK">Github</a>
         </div>
       </div>
@@ -118,7 +152,7 @@ fn main() {
       <div class="mt-6 gap-6">
         <div class="nes-container is-rounded bg-cream">
           <h3 class="text-lg font-normal">Contributions</h3>
-          <p class="text-sm">github.com/aloyak</p>
+          <a class="text-sm" href="https://github.com/aloyak">github.com/aloyak</a>
           <div id="contributions-chart"></div>
         </div>
       </div>
@@ -140,21 +174,41 @@ fn main() {
             <li> Rust</li>
             <li> Python</li>
           </ul>
+
+          <h3 class="text-lg font-normal mt-6">Tools</h3>
+          <ul class="nes-list is-disc list-inside my-3 ml-5">
+            <li> Git</li>
+            <li> Blender</li>
+            <li> Cmake and Premake</li>
+            <li> Unity Engine</li>
+          </ul><br>
           
           <p class="mt-3 leading-relaxed">
-            I'm always open for conversation and I actually pay attention to my email. So feel free to reach out!
+            > I'm always open for conversation and I actually pay attention to my email. So feel free to reach out!
+          </p>
+        </div>
+      </div>
+      <div class="mt-6">
+        <div class="nes-container with-title is-rounded bg-cream">
+          <p class="title">Hackclub</p>
+
+          <img src="https://assets.hackclub.com/flag-orpheus-top.svg" alt="Hackclub Logo" class="absolute top-0 right-10" />          
+
+          <p class="mt-3 leading-relaxed">
+            Proud member of Hackclub!<br>
+            <a class="nes-btn mt-4 is-error" href="https://flavortown.hackclub.com/users/5080">My Profile!</a>
+            <br><br><br>
           </p>
         </div>
       </div>
 
-      <footer class="mt-12 text-sm text-center text-ink/70">
+      <footer class="my-12 text-sm text-center text-ink/70">
         <p>© 2026 @aloyak</p>
       </footer>
     </main>
     <script>
       hljs.highlightAll();
       
-      // Handle code highlighting in dark mode
       const observer = new MutationObserver(() => {
         document.querySelectorAll('pre code').forEach(el => {
           hljs.highlightElement(el);
