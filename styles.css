@@ -1,0 +1,114 @@
+/* https://colorhunt.co/palette/fffdf6faf6e9ddeb9da0c878 */
+:root {
+  --sand: #FFFDF6;
+  --cream: #FAF6E9;
+  --ink: #2b2b2b;
+  --accent: #DDEB9D;
+}
+
+body {
+  font-family: "Press Start 2P", "Courier New", monospace;
+  background-color: var(--sand);
+  color: var(--ink);
+}
+
+html[data-theme="dark"] {
+  --sand: #1a1a1a;
+  --cream: #2d2d2d;
+  --ink: #e8e8e8;
+  --accent: #a89a3a;
+}
+
+html[data-theme="dark"] body {
+  background-color: var(--sand);
+  color: var(--ink);
+}
+
+html[data-theme="dark"] .nes-container,
+html[data-theme="dark"] .nes-balloon {
+  background-color: var(--cream);
+  border-color: var(--ink);
+}
+
+html[data-theme="dark"] .nes-input,
+html[data-theme="dark"] .nes-textarea {
+  background-color: var(--cream);
+  color: var(--ink);
+  border-color: var(--ink);
+}
+
+p {
+    opacity: 0.7;
+}
+
+.nes-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nes-checkbox input {
+  cursor: pointer;
+}
+
+.nes-checkbox span {
+  cursor: pointer;
+  user-select: none;
+}
+
+pre {
+  font-family: "Press Start 2P", "Courier New", monospace;
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+
+pre code {
+  font-family: "Press Start 2P", "Courier New", monospace;
+}
+
+html[data-theme="dark"] pre {
+  background-color: #1a1a1a !important;
+  color: #e8e8e8 !important;
+}
+
+.bg-sand {
+  background-color: var(--sand);
+}
+
+.bg-cream {
+  background-color: var(--cream);
+}
+
+.text-ink {
+  color: var(--ink);
+}
+
+.page-noise {
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(
+      rgba(0, 0, 0, 0.025) 1px,
+      transparent 1px
+    ),
+    radial-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+  background-size: 18px 18px, 32px 32px;
+  opacity: 0.2;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+
+.nes-container.with-title > .title {
+  background-color: var(--accent);
+  color: #1b1b1b;
+}
+
+.nes-btn.is-primary {
+  background-color: var(--accent);
+  color: #1b1b1b;
+}
+
+@media (max-width: 640px) {
+  body {
+    font-size: 12px;
+  }
+}
