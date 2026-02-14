@@ -44,6 +44,24 @@ html[data-theme="dark"] .nes-textarea {
   border-color: var(--ink);
 }
 
+html[data-theme="dark"] .hero-layer.layer-1 {
+  background-image: url("assets/parallax-dark/1.png");
+}
+
+html[data-theme="dark"] .hero-layer.layer-2 {
+  background-image: url("assets/parallax-dark/2.png");
+}
+
+html[data-theme="dark"] .hero-layer.layer-3 {
+  background-image: url("assets/parallax-dark/3.png");
+  z-index: 3;
+}
+
+html[data-theme="dark"] .hero-layer.layer-4 {
+  background-image: none;
+  opacity: 0;
+}
+
 p {
     opacity: 0.7;
 }
@@ -108,8 +126,8 @@ html[data-theme="dark"] pre {
 
 .profile-balloon {
   position: absolute;
-  left: -25%;
-  bottom: -25%;
+  left: -15%;
+  bottom: -20%;
   max-width: 170px;
   font-size: 0.6rem;
   line-height: 1.2;
@@ -172,10 +190,10 @@ html[data-theme="dark"] pre {
 }
 
 .hero-layer.layer-1 {
-  --layer-speed: 300s;
+  --layer-speed: 360s;
   --layer-opacity: 0.9;
   animation-delay: -10s;
-  background-image: url("parallax/1.png");
+  background-image: url("assets/parallax-light/1.png");
   z-index: 0;
 }
 
@@ -183,7 +201,7 @@ html[data-theme="dark"] pre {
   --layer-speed: 100s;
   --layer-opacity: 0.75;
   animation-delay: -20s;
-  background-image: url("parallax/2.png");
+  background-image: url("assets/parallax-light/2.png");
   z-index: 0;
 }
 
@@ -191,22 +209,22 @@ html[data-theme="dark"] pre {
   --layer-speed: 60s;
   --layer-opacity: 0.6;
   animation-delay: -10s;
-  background-image: url("parallax/3.png");
-  z-index: 0;
+  background-image: url("assets/parallax-light/3.png");
+  z-index: 1;
 }
 
 .hero-layer.layer-4 {
   --layer-speed: 30s;
   --layer-opacity: 0.45;
   animation-delay: -30s;
-  background-image: url("parallax/4.png");
-  z-index: 2;
+  background-image: url("assets/parallax-light/4.png");
+  z-index: 3;
 }
 
 .hero-inner {
   max-width: 900px;
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .hero-content {
