@@ -7,11 +7,21 @@
   --hero-text: #1b1b1b;
   --hero-border: #1b1b1b;
   --hero-content-bg: rgba(255, 255, 255, 0.9);
+  --panel-shadow: rgba(36, 24, 16, 0.25);
+  --bg-pixel: rgba(45, 35, 24, 0.04);
+  --bg-pixel-2: rgba(45, 35, 24, 0.02);
 }
 
 body {
   font-family: "Press Start 2P", "Courier New", monospace;
   background-color: var(--bg);
+  background-image:
+    linear-gradient(90deg, var(--bg-pixel) 1px, transparent 1px),
+    linear-gradient(0deg, var(--bg-pixel) 1px, transparent 1px),
+    linear-gradient(90deg, var(--bg-pixel-2) 1px, transparent 1px),
+    linear-gradient(0deg, var(--bg-pixel-2) 1px, transparent 1px);
+  background-size: 32px 32px, 32px 32px, 8px 8px, 8px 8px;
+  background-position: -1px -1px, -1px -1px, -1px -1px, -1px -1px;
   color: var(--ink);
   overflow-x: hidden;
 }
@@ -24,6 +34,9 @@ html[data-theme="dark"] {
   --hero-text: #ffffff;
   --hero-border: #ffffff;
   --hero-content-bg: rgba(0, 0, 0, 0.9);
+  --panel-shadow: rgba(0, 0, 0, 0.65);
+  --bg-pixel: rgba(255, 255, 255, 0.01);
+  --bg-pixel-2: rgba(255, 255, 255, 0.005);
 }
 
 html[data-theme="dark"] body {
@@ -198,7 +211,7 @@ html[data-theme="dark"] pre {
 }
 
 .hero-layer.layer-2 {
-  --layer-speed: 100s;
+  --layer-speed: 230s;
   --layer-opacity: 0.75;
   animation-delay: -20s;
   background-image: url("assets/parallax-light/2.png");
@@ -206,7 +219,7 @@ html[data-theme="dark"] pre {
 }
 
 .hero-layer.layer-3 {
-  --layer-speed: 60s;
+  --layer-speed: 120s;
   --layer-opacity: 0.6;
   animation-delay: -10s;
   background-image: url("assets/parallax-light/3.png");
@@ -214,8 +227,8 @@ html[data-theme="dark"] pre {
 }
 
 .hero-layer.layer-4 {
-  --layer-speed: 30s;
-  --layer-opacity: 0.45;
+  --layer-speed: 50s;
+  --layer-opacity: 0.5;
   animation-delay: -30s;
   background-image: url("assets/parallax-light/4.png");
   z-index: 3;
@@ -303,6 +316,21 @@ html[data-theme="dark"] pre {
 .nes-container.with-title > .title {
   background-color: var(--accent);
   color: #1b1b1b;
+}
+
+.nes-container {
+  box-shadow: 6px 6px 0 var(--panel-shadow);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.nes-container:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0 var(--panel-shadow);
+}
+
+.nes-container:active {
+  transform: translate(1px, 1px);
+  box-shadow: 4px 4px 0 var(--panel-shadow);
 }
 
 .nes-btn.is-primary {
