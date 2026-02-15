@@ -10,6 +10,8 @@
   --panel-shadow: rgba(36, 24, 16, 0.25);
   --bg-pixel: rgba(45, 35, 24, 0.04);
   --bg-pixel-2: rgba(45, 35, 24, 0.02);
+  --hero-highlight: rgba(165, 200, 158, 0.6);
+  --hero-shadow: rgba(18, 18, 18, 0.65);
 }
 
 body {
@@ -37,6 +39,8 @@ html[data-theme="dark"] {
   --panel-shadow: rgba(0, 0, 0, 0.65);
   --bg-pixel: rgba(255, 255, 255, 0.01);
   --bg-pixel-2: rgba(255, 255, 255, 0.005);
+  --hero-highlight: rgba(165, 200, 158, 0.35);
+  --hero-shadow: rgba(0, 0, 0, 0.75);
 }
 
 html[data-theme="dark"] body {
@@ -270,6 +274,11 @@ html[data-theme="dark"] pre {
   gap: 0.05em;
   flex-wrap: wrap;
   justify-content: center;
+  color: var(--hero-text);
+  text-shadow:
+    -3px -3px 0 var(--hero-highlight),
+    3px 3px 0 var(--hero-shadow),
+    6px 6px 0 rgba(0, 0, 0, 0.35);
 }
 
 .hero-letter {
