@@ -5,14 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/png" href="https://avatars.githubusercontent.com/u/92647999?v=4" />
     <title>4loyak!</title>
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
-    />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="styles.css" />
     <script src="app.js" defer></script>
@@ -20,32 +13,32 @@
   <body class="min-h-screen text-ink">
     <div class="page-noise"></div>
     <main class="max-w-3xl mx-auto px-6 py-12">
-      <header class="mb-10 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-        <h1 class="text-2xl md:text-3xl font-normal">
+      <header class="mb-14 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+        <h1 class="text-3xl md:text-4xl title-font">
           <a href="/">4loyak!</a>
         </h1>
-        <nav class="flex flex-wrap gap-2 items-center text-xs md:text-sm">
-          <a class="nes-btn is-success" href="/">Back</a>
-          <a class="nes-btn is-error" href="https://github.com/aloyak"><i class="nes-icon github"></i></a>
-          <label class="nes-checkbox flex items-center gap-1">
-            <input id="dark-mode-toggle" type="checkbox" />
-            <span class="text-xs">Dark</span>
+        <nav class="flex flex-wrap gap-3 items-center text-sm md:text-base">
+          <a class="neo-btn neo-btn-success" href="/">Back</a>
+          <a class="neo-btn neo-btn-error" href="https://github.com/aloyak">GitHub</a>
+          <label class="flex items-center gap-2 font-bold cursor-pointer ml-2">
+            <input id="dark-mode-toggle" type="checkbox" class="neo-checkbox" />
+            <span class="text-base">Dark</span>
           </label>
         </nav>
       </header>
 
-      <section class="nes-container with-title is-rounded bg-cream">
-        <p class="title">Contact</p>
+      <section class="neo-card relative mt-12">
+        <h2 class="text-2xl title-font bg-[#ff9d7b] text-black inline-block px-4 py-2 border-[4px] border-black rounded shadow-[4px_4px_0px_#000] absolute -top-6 left-6">Contact</h2>
 
-        <p class="text-m leading-relaxed max-w-xl">
-          Want to say hi, share a project idea, or ask a question? Fill out the form below or reach out via email at <a href="mailto:almartdev@proton.me" class="text-primary hover:underline">almartdev@proton.me</a>
+        <p class="text-lg font-bold leading-relaxed max-w-xl mt-10">
+          Want to say hi, share a project idea, or ask a question? Fill out the form below or reach out via email at <a href="mailto:almartdev@proton.me" class="underline hover:text-[#7da5ff] transition-colors">almartdev@proton.me</a>
         </p>
         
-        <form class="mt-4 space-y-6" method="POST" action="https://formspree.io/f/xojnegao">
+        <form class="mt-10 space-y-8 font-bold text-lg" method="POST" action="https://formspree.io/f/xojnegao">
           <div>
-            <label class="block text-sm mb-2" for="email">Email <span class="text-red-500">*</span></label>
+            <label class="block mb-3" for="email">Email <span class="text-red-500">*</span></label>
             <input
-              class="nes-input w-full"
+              class="neo-input"
               id="email"
               name="email"
               type="email"
@@ -54,9 +47,9 @@
             />
           </div>
           <div>
-            <label class="block text-sm mb-2" for="title">Title <span class="text-red-500">*</span></label>
+            <label class="block mb-3" for="title">Title <span class="text-red-500">*</span></label>
             <input
-              class="nes-input w-full"
+              class="neo-input"
               id="title"
               name="title"
               type="text"
@@ -65,9 +58,9 @@
             />
           </div>
           <div>
-            <label class="block text-sm mb-2" for="content">Content <span class="text-red-500">*</span></label>
+            <label class="block mb-3" for="content">Content <span class="text-red-500">*</span></label>
             <textarea
-              class="nes-textarea w-full"
+              class="neo-input min-h-[200px] resize-y"
               id="content"
               name="content"
               rows="6"
@@ -75,7 +68,7 @@
               required
             ></textarea>
           </div>
-          <button class="nes-btn is-primary" type="submit">Send!</button>
+          <button class="neo-btn neo-btn-primary w-full md:w-auto text-xl mt-4 px-8 py-3" type="submit">Send!</button>
         </form>
       </section>
     </main>

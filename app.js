@@ -1,5 +1,3 @@
-// Unified JavaScript for 4loyak personal site
-
 document.addEventListener("DOMContentLoaded", () => {
   
   const darkModeToggle = document.getElementById("dark-mode-toggle");
@@ -59,20 +57,52 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (themeYes) {
     themeYes.addEventListener("change", () => {
-      if (themeYes.checked) {
-        updateTheme(true);
-      }
+      if (themeYes.checked) updateTheme(true);
     });
   }
   
   if (themeNo) {
     themeNo.addEventListener("change", () => {
-      if (themeNo.checked) {
-        updateTheme(false);
-      }
+      if (themeNo.checked) updateTheme(false);
     });
   }
 
+  // ── SK Logic ──
+  const skSlider = document.getElementById("sk-base-slider");
+  const skSliderVal = document.getElementById("sk-slider-val");
+  const skCodeBlock = document.getElementById("sk-code-block");
+  const skTryBtn = document.getElementById("sk-try-btn");
+
+  if (skSlider && skCodeBlock) {
+    const updateSKCode = (val) => {
+      skSliderVal.textContent = val;
+      skCodeBlock.textContent = `import time
+
+fn temp(base = ${val}) {
+    let temperature = [17..23]
+    print("Temperature is", temperature + base)
+}
+
+for day in ["Monday", "Tuesday", "Wednesday"] {
+    print("Today is", day)
+    print("Time", time.format(time.now()))
+    temp(${val})
+}`;
+      hljs.highlightElement(skCodeBlock);
+    };
+
+    skSlider.addEventListener("input", (e) => updateSKCode(e.target.value));
+    
+    if (skTryBtn) {
+      skTryBtn.addEventListener("click", () => {
+        const val = skSlider.value;
+        const code64 = btoa(skCodeBlock.textContent);
+        window.location.href = `https://sk.aloyak.dev/ide?code64=${code64}`;
+      });
+    }
+  }
+
+  // ── Local time display ──
   const timeDisplay = document.getElementById("time-display");
   if (timeDisplay) {
     const updateTime = () => {
@@ -97,11 +127,45 @@ document.addEventListener("DOMContentLoaded", () => {
     setInterval(updateTime, 1000);
   }
 
+  // ── GitHub stats ──
+  const ghReposEl   = document.getElementById("gh-repos");
+  const ghStarsEl   = document.getElementById("gh-stars");
+  const ghFollowersEl = document.getElementById("gh-followers");
+
+  if (ghReposEl || ghStarsEl || ghFollowersEl) {
+    const fetchGitHubStats = async () => {
+      try {
+        const [userRes, reposRes] = await Promise.all([
+          fetch("https://api.github.com/users/aloyak"),
+          fetch("https://api.github.com/users/aloyak/repos?per_page=100"),
+        ]);
+
+        if (!userRes.ok || !reposRes.ok) throw new Error("GitHub API error");
+
+        const user  = await userRes.json();
+        const repos = await reposRes.json();
+
+        const totalStars = Array.isArray(repos)
+          ? repos.reduce((sum, r) => sum + (r.stargazers_count || 0), 0)
+          : 0;
+
+        if (ghReposEl)    ghReposEl.textContent    = user.public_repos ?? "—";
+        if (ghStarsEl)    ghStarsEl.textContent    = totalStars;
+        if (ghFollowersEl) ghFollowersEl.textContent = user.followers ?? "—";
+      } catch (err) {
+        console.error("Failed to fetch GitHub stats:", err);
+      }
+    };
+
+    fetchGitHubStats();
+  }
+
+  // ── GitHub contributions chart ──
   const contributionsContainer = document.getElementById("contributions-chart");
   if (contributionsContainer) {
     const fetchGitHubContributions = async () => {
       try {
-        const response = await fetch('https://github-contributions-api.jogruber.de/v4/aloyak?y=last');
+        const response = await fetch("https://github-contributions-api.jogruber.de/v4/aloyak?y=last");
         const data = await response.json();
         
         const contributions = [];
@@ -120,14 +184,14 @@ document.addEventListener("DOMContentLoaded", () => {
         for (let i = 0; i < 365; i++) {
           const date = new Date(startDate);
           date.setDate(date.getDate() + i);
-          const dateStr = date.toISOString().split('T')[0];
+          const dateStr = date.toISOString().split("T")[0];
           const count = contributionMap[dateStr] || 0;
           contributions.push({ date: dateStr, count });
         }
 
         return { contributions, totalContributions };
       } catch (error) {
-        console.error('Failed to fetch GitHub contributions:', error);
+        console.error("Failed to fetch GitHub contributions:", error);
         return generateMockData();
       }
     };
@@ -144,7 +208,7 @@ document.addEventListener("DOMContentLoaded", () => {
         date.setDate(date.getDate() + i);
         const count = Math.random() > 0.3 ? Math.floor(Math.random() * 11) : 0;
         totalContributions += count;
-        contributions.push({ date: date.toISOString().split('T')[0], count });
+        contributions.push({ date: date.toISOString().split("T")[0], count });
       }
       return { contributions, totalContributions };
     };
@@ -163,16 +227,16 @@ document.addEventListener("DOMContentLoaded", () => {
         weeks.push(data.slice(i, i + 7));
       }
 
-      const grid = document.createElement('div');
-      grid.className = 'pixel-grid';
+      const grid = document.createElement("div");
+      grid.className = "pixel-grid";
 
       weeks.forEach(week => {
-        const col = document.createElement('div');
-        col.className = 'pixel-col';
+        const col = document.createElement("div");
+        col.className = "pixel-col";
         week.forEach(day => {
-          const cell = document.createElement('div');
+          const cell = document.createElement("div");
           cell.className = `pixel-cell level-${getLevel(day.count)}`;
-          cell.title = `${day.count} contributions on ${day.date}`;
+          cell.title = `${day.count} contribution${day.count !== 1 ? "s" : ""} on ${day.date}`;
           col.appendChild(cell);
         });
         grid.appendChild(col);
@@ -180,9 +244,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
       contributionsContainer.appendChild(grid);
 
-      const totalEl = document.createElement('div');
-      totalEl.className = 'contributions-total';
-      totalEl.textContent = `${total} Contributions This Year`;
+      const totalEl = document.createElement("div");
+      totalEl.className = "contributions-total";
+      totalEl.textContent = `${total.toLocaleString()} Contributions in the Last Year`;
       contributionsContainer.appendChild(totalEl);
     };
 
